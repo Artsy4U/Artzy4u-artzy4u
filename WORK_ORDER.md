@@ -50,10 +50,26 @@ didn't match and the deploy key 404'd until the repo was transferred.
 
 ---
 
-## Item 400 — Netlify site + domain — **OPEN**
+## Item 400 — Netlify site + domain — **PARTIAL**
 
-New Netlify project on the **personal** team (dolan.todar@gmail), same team as
-3rdworldart. Link the repo, branch `main`, build command blank, publish `.`.
+### ✅ Project created 8/1
+
+| | |
+|---|---|
+| Name | `artzy4u` |
+| Site ID | `c2e7bc85-b433-492a-8d6d-7fbbaf90bb57` |
+| Team | `dolan-todar` ("Stephanie Jones", personal) |
+| URL | `https://artzy4u.netlify.app` |
+
+### ⬜ Continuous deployment — needs Stephanie
+
+Requires an interactive GitHub OAuth grant, which an agent cannot complete.
+
+`https://app.netlify.com/projects/artzy4u/configuration/deploys`
+→ Link repository → GitHub → `Artsy4U/Artzy4u-artzy4u`
+→ branch `main`, build command blank, publish `.` (all already in netlify.toml)
+
+### ⬜ Domain attach — after CD is live
 
 Then attach `artzy4u.com` — apex primary, `www` redirecting to it.
 
