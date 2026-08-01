@@ -30,7 +30,9 @@ Decide and supply:
 | # | Question |
 |---|---------|
 | 201 | Is the wordmark **Artzy4u** correct as displayed — capital A, lowercase rest, "4u" in mulberry? |
-| 202 | What other lines of work belong here besides embroidery? Each needs a name, one sentence, and a photo |
+| 202 | What other lines belong here besides embroidery and the shop? Each needs a name, one sentence, and a photo |
+| 206 | **The Shop card has no product photo** — it renders a styled `.shot--sign` panel as a stand-in. Drop a real product shot into `images/` and replace it |
+| 207 | Is "The Shop" the right card title, given the umbrella is Artzy4u and the shop is Artsy4u? Two spellings on one page may confuse visitors |
 | 203 | Is the tagline right — "Art made from materials that already had a life"? |
 | 204 | Does the statement block read in your voice, or should it be rewritten the way 502 was on the other site? |
 | 205 | Hero photo — currently the denim flowers. Better one? |
@@ -71,18 +73,41 @@ doesn't link it.
 
 ---
 
-## Item 700 — artsy4u.com redirect — **OPEN, gated on 400**
+## Item 700 — artsy4u.com — ✅ **RESOLVED 8/1**
 
-**Decided 8/1:** once artzy4u.com is live, `artsy4u.com` redirects to it. Both
-spellings land on the brand site; the s/z confusion stops being a thing to
-manage.
+### ⚠ The original decision was REVERSED — read this before acting
 
-### What's wrong today (verified 8/1 from public DNS + HTTP)
+**Superseded:** "once artzy4u.com is live, artsy4u.com redirects to it."
 
-`https://artsy4u.com` returns **301 → `https://www.artsy4y.com/`** — note the
-**`y`**, a third spelling. That target is a **parked-domain lander** (body is
-just `window.location.href="/lander"`), on Network Solutions nameservers. So
-the Workspace primary domain currently hands every visitor to an ad page.
+That was decided while the evidence said artsy4u.com fed a parked ad lander with
+nothing behind it. **It doesn't.** artsy4u.com is a **live Squarespace
+storefront** — "Artsy4u by Desigb", with products, a cart and services:
+
+- **I Resist! Ornament Series** — "Read Banned Books Penguin Ornament", $15.00
+- **Originals & Collectibles** shop section
+- Custom Commission · Space Curation · Art Installation
+
+**Redirecting it would have taken the store offline.**
+
+**Decided 8/1 (revised):** artsy4u.com **stays as the shop**. artzy4u.com links
+to it as a second line of work, alongside 3rd World Art. No redirect.
+
+```
+artzy4u.com  (umbrella brand)
+├── 3rdworldart.art   — hand embroidery portfolio
+└── artsy4u.com       — Artsy4u shop
+```
+
+### The redirect fault — FIXED 8/1 by Stephanie
+
+Was: `https://artsy4u.com` → **301 → `https://www.artsy4y.com/`** (a parked
+lander). The rule lived in the connected Squarespace **site's URL Mappings**,
+not in Domain settings — which is why it wasn't where we first looked. The DNS
+gave it away: apex A `198.185.159.145` / `198.49.23.144` + `www` CNAME
+`ext-cust.squarespace.com` = a domain connected to a Squarespace *site*.
+
+**Verified fixed:** apex now 301s to its own `www.artsy4u.com`, which returns
+200. `Age: 0` on both — fresh, not cached. Store is serving.
 
 | Fact | Value |
 |---|---|
@@ -141,6 +166,36 @@ The account is under a different identity, which is why it never surfaced:
 | Addressed to | "Hello **Diana**" |
 | Account email | `diwanski@cfl.rr.com` (forwarded to dolan.todar@gmail.com) |
 | Squarespace account | `diana-iwanski.squarespace.com` |
+
+### FULL DOMAIN ESTATE — verified 8/1/2026 (RDAP + DNS + mail history)
+
+| Domain | Registrar | Expires | DNS | Web | Email |
+|---|---|---|---|---|---|
+| artsy4y.com | Tucows *(via Squarespace)* | 2027-07-26 | `renewyourname.net` parking ⚠ | ad lander | — |
+| artsy4u.com | Squarespace Domains | 2028-04-02 | Squarespace | 301 → artsy4y ⚠ | Google Workspace (PRIMARY) |
+| artzy4u.com | Name.com | 2027-07-06 | Netlify DNS p06 | nothing | Google alias domain (pending) |
+| artzy4u.studio | Squarespace Domains II | 2027-03-06 | Google Cloud DNS | 301 → www | **Mailgun** |
+| 3rdworldart.art | Name.com | 2027-07-24 | Netlify DNS p01 | ✅ live site | — |
+
+**Five domains · four registrar entities · four DNS providers · three email
+systems.** artsy4u.com was transferred INTO Squarespace 5/27–6/2/2026.
+
+### Account access — RESOLVED 8/1
+
+Recovery works. Squarespace sent a **login verification code to
+`dolan.todar@gmail.com`** on 2026-05-28. The account email was moved off
+`diwanski@cfl.rr.com` before it died. Notices still open "Hello Diana" — stale
+contact *name* only, not a routing problem.
+
+### ⚠ CREDENTIALS EXPOSED IN THE GMAIL INBOX — handle first
+
+| Date | Subject | Risk |
+|---|---|---|
+| 2026-05-28 | "Your Domain Authorization Code" (artzy4u.studio) | Plaintext auth code — permits transfer of the domain to another registrar |
+| 2026-05-27 | "Google Workspace Email Invitation" (diana@artsy4u.com) | Plaintext temporary password — possibly an unclaimed mailbox on the primary domain |
+
+Rotate the Workspace password; regenerate/lock the auth code unless a transfer
+is actually in flight.
 
 ### Squarespace sites also on that billing
 

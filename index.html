@@ -108,12 +108,28 @@
     border-radius:4px;
   }
   .shot img{width:100%;display:block;border-radius:2px;}
+  /* A line with no photo yet — a stitched sign instead of a broken frame.
+     Swap in a real product shot and delete the .shot--sign markup. */
+  .shot--sign{
+    background:var(--indigo);
+    border-color:rgba(30,49,69,.55);
+    display:flex;align-items:center;justify-content:center;
+    aspect-ratio:4/3;
+  }
+  .shot--sign span{
+    font-family:'Fraunces',Georgia,serif;
+    font-variation-settings:'SOFT' 100,'WONK' 1;
+    font-weight:900;font-size:clamp(1.6rem,5vw,2.4rem);
+    color:var(--hoop);text-align:center;line-height:1.05;
+    padding:24px;
+  }
   .title{
     font-family:'Fraunces',Georgia,serif;
     font-variation-settings:'SOFT' 100,'WONK' 1;
     font-weight:900;font-size:clamp(1.7rem,6vw,2.5rem);line-height:1.02;
     margin:0 0 14px;color:var(--indigo);
   }
+  .line:nth-child(2) .title{color:var(--mulberry);}
   .line-desc{margin:0 0 18px;color:rgba(20,28,38,.78);max-width:44ch;}
   .spec{list-style:none;padding:0;margin:0 0 18px;font-size:14px;}
   .spec li{
@@ -205,6 +221,22 @@
           <li><span class="k">Editions</span><span>One of each &mdash; no repeats</span></li>
         </ul>
         <a class="go" href="https://3rdworldart.art">See the embroidery<span class="arrow">&rarr;</span></a>
+      </div>
+    </article>
+
+    <article class="line">
+      <div class="shot shot--sign">
+        <span>Artsy4u<br>Shop</span>
+      </div>
+      <div>
+        <h3 class="title">The Shop</h3>
+        <p class="line-desc">Ornaments, originals and collectibles &mdash; plus commissions, curation and installation.</p>
+        <ul class="spec">
+          <li><span class="k">Sells</span><span>Hand-painted ornaments, original pieces</span></li>
+          <li><span class="k">Series</span><span>I Resist! &mdash; including the Read Banned Books penguin</span></li>
+          <li><span class="k">Also</span><span>Custom commissions and installation</span></li>
+        </ul>
+        <a class="go" href="https://artsy4u.com">Visit the shop<span class="arrow">&rarr;</span></a>
       </div>
     </article>
 
