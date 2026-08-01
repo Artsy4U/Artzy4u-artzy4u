@@ -71,6 +71,44 @@ doesn't link it.
 
 ---
 
+## Item 700 — artsy4u.com redirect — **OPEN, gated on 400**
+
+**Decided 8/1:** once artzy4u.com is live, `artsy4u.com` redirects to it. Both
+spellings land on the brand site; the s/z confusion stops being a thing to
+manage.
+
+### What's wrong today (verified 8/1 from public DNS + HTTP)
+
+`https://artsy4u.com` returns **301 → `https://www.artsy4y.com/`** — note the
+**`y`**, a third spelling. That target is a **parked-domain lander** (body is
+just `window.location.href="/lander"`), on Network Solutions nameservers. So
+the Workspace primary domain currently hands every visitor to an ad page.
+
+| Fact | Value |
+|---|---|
+| artsy4u.com nameservers | `nsd1-4.squarespacedns.com` — **Squarespace, not Netlify** |
+| Redirect served by | `Server: Squarespace` |
+| artsy4u.com MX | full Google set (`aspmx.l.google.com` + alts) — **healthy, untouched** |
+| Netlify project "artsy4u.com" | **orphaned** — named for the domain but not serving it; April Netlify Drop, unreviewed content |
+
+### Two open unknowns
+
+- **Does Stephanie own `artsy4y.com`?** Different registrar from her others. If
+  not hers, artsy4u.com is leaking traffic to a third party's parked page.
+- **What's in the orphaned Netlify project?** Thumbnail looked like a financial
+  dashboard. Review before deleting anything.
+
+### The fix
+
+The redirect lives in **Squarespace**, not Netlify — nothing in the Netlify UI
+will change it. Repoint it from `www.artsy4y.com` to `artzy4u.com`.
+
+> ⚠ Change the **web redirect only**. Do not touch artsy4u.com's MX records —
+> that domain is the Google Workspace primary, and artzy4u.com is an alias
+> *of it*. Breaking artsy4u.com's mail breaks both addresses at once.
+
+---
+
 ## Item 600 — Email flip — **OPEN, gated**
 
 When `stephanie@artzy4u.com` is confirmed receiving, flip the contact address
