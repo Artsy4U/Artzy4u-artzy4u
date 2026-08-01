@@ -107,15 +107,50 @@ Squarespace as she recalled — RDAP says **Tucows**.
 
 Four domains, **three registrars, two DNS providers, multiple accounts.**
 
-### Likely root cause of the parked page — INFERRED, not proven
+### Root cause of the parked page — CONFIRMED 8/1 from Gmail history
 
-`renewyourname.net` is Tucows' renewal/parking nameserver. artsy4y.com's
-anniversary is July 26; its record was **last changed July 30** with a fresh
-2027 expiry. Reads as: **lapsed ~7/26 → parked → renewed 7/30 → nameservers
-never restored.** The redirect was probably fine for years; the target fell out
-from under it days ago.
+Not an inference any more. The mail trail in `dolan.todar@gmail.com` proves it:
 
-*Verified:* registrar, dates, nameservers. *Inferred:* the lapse sequence.
+| Date | Event |
+|---|---|
+| 2025-08-13 | Squarespace **"Card Billing Failure"** — sites Artsy4U + supply.artsy4y |
+| 2025-09-13 | **"Card Billing Failure"** again, both sites |
+| 2025-10-21 | **"You've disabled auto-renew"** confirmation |
+| 2026-06-27 | "artsy4y.com expires Jul 26, 2026" |
+| 2026-07-12 | Same reminder, unread |
+| 2026-07-26 | Expired → Tucows parking (`renewyourname.net`) |
+| 2026-07-30 | Renewed (RDAP last-changed) — **nameservers never restored** |
+
+Auto-renew was switched off ~10 months prior with a failing card on file, and
+four warnings went to an inbox nobody was watching.
+
+### WHERE IT ACTUALLY LIVES — corrected
+
+Earlier note said "Tucows, not Squarespace." **That was wrong in the way that
+matters.** Both are true:
+
+- **Tucows** = registrar of record (what RDAP shows)
+- **Squarespace** = the **reseller** — the account that bills and notifies
+
+Stephanie's recollection of "a different Squarespace account" was **correct**.
+
+The account is under a different identity, which is why it never surfaced:
+
+| | |
+|---|---|
+| Addressed to | "Hello **Diana**" |
+| Account email | `diwanski@cfl.rr.com` (forwarded to dolan.todar@gmail.com) |
+| Squarespace account | `diana-iwanski.squarespace.com` |
+
+### Squarespace sites also on that billing
+
+| Site | URL | Plan |
+|---|---|---|
+| "Artsy4U" / later "RESIST!" | `artsy4u.squarespace.com` | $25.00 Basic |
+| "supply.artsy4y" | `diana-iwanski.squarespace.com` | Basic |
+
+Both had failed payments in 2025. **Audit before renewing anything** — these may
+be paid subscriptions on properties that no longer serve the brand.
 
 ### Follow-on risks
 
