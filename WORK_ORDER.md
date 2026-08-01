@@ -91,12 +91,43 @@ the Workspace primary domain currently hands every visitor to an ad page.
 | artsy4u.com MX | full Google set (`aspmx.l.google.com` + alts) — **healthy, untouched** |
 | Netlify project "artsy4u.com" | **orphaned** — named for the domain but not serving it; April Netlify Drop, unreviewed content |
 
-### Two open unknowns
+### Ownership — RESOLVED 8/1
 
-- **Does Stephanie own `artsy4y.com`?** Different registrar from her others. If
-  not hers, artsy4u.com is leaking traffic to a third party's parked page.
-- **What's in the orphaned Netlify project?** Thumbnail looked like a financial
-  dashboard. Review before deleting anything.
+Stephanie **owns artsy4y.com**. Not a stranger's domain. But it is *not* on
+Squarespace as she recalled — RDAP says **Tucows**.
+
+### The domain estate (RDAP, verified 8/1/2026)
+
+| Domain | Registrar | Registered | Expires | Nameservers |
+|---|---|---|---|---|
+| artsy4y.com | Tucows | **2013-07-26** | 2027-07-26 | `ns1/ns2.renewyourname.net` ⚠ |
+| artsy4u.com | Squarespace Domains | 2025-04-02 | 2028-04-02 | Squarespace DNS |
+| artzy4u.com | Name.com | 2026-07-06 | 2027-07-06 | Netlify DNS (p06) |
+| 3rdworldart.art | Name.com | 2026-07-24 | 2027-07-24 | Netlify DNS (p01) |
+
+Four domains, **three registrars, two DNS providers, multiple accounts.**
+
+### Likely root cause of the parked page — INFERRED, not proven
+
+`renewyourname.net` is Tucows' renewal/parking nameserver. artsy4y.com's
+anniversary is July 26; its record was **last changed July 30** with a fresh
+2027 expiry. Reads as: **lapsed ~7/26 → parked → renewed 7/30 → nameservers
+never restored.** The redirect was probably fine for years; the target fell out
+from under it days ago.
+
+*Verified:* registrar, dates, nameservers. *Inferred:* the lapse sequence.
+
+### Follow-on risks
+
+- **artsy4y.com is the oldest domain by 12 years** — likely the original brand,
+  may carry inbound links and history. Item 700 routes traffic away from it,
+  but keep it registered and pointed somewhere sane rather than retiring it.
+- **Three domains expire July 2027 across three separate accounts.** One just
+  lapsed unnoticed. Put all four on auto-renew; consider consolidating
+  registrars to one login.
+- **Orphaned Netlify project "artsy4u.com"** — named for the domain but not
+  serving it; April Netlify Drop, financial-dashboard thumbnail. Review
+  contents before deleting.
 
 ### The fix
 
