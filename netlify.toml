@@ -1,0 +1,14 @@
+# artzy4u.com — static site, no build step.
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
