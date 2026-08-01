@@ -69,7 +69,47 @@ Requires an interactive GitHub OAuth grant, which an agent cannot complete.
 → Link repository → GitHub → `Artsy4U/Artzy4u-artzy4u`
 → branch `main`, build command blank, publish `.` (all already in netlify.toml)
 
-### ⬜ Domain attach — after CD is live
+### ✅ Deployed 8/1 (direct CLI deploy, pending CD link)
+
+`netlify deploy --prod --dir . --site c2e7bc85-…` → live.
+
+### ✅ Domain attached 8/1 — artzy4u.com
+
+`netlify api updateSite` → `custom_domain=artzy4u.com`,
+`domain_aliases=["www.artzy4u.com"]`. Netlify DNS auto-created both web records
+as `NETLIFY`-type ALIAS (they serve **A** records — querying CNAME returns
+nothing; that's normal, not a fault).
+
+**Email records verified intact before AND after the attach:**
+
+| Record | Status |
+|---|---|
+| MX `1 smtp.google.com.` / `5 aspmx.l.google.com.` | ✅ unchanged |
+| TXT `v=spf1 include:_spf.google.com ~all` | ✅ unchanged |
+| TXT `google-site-verification=bEW8jI92…` | ✅ unchanged |
+| TXT `google._domainkey` DKIM | ✅ unchanged |
+
+TLS: Let's Encrypt `CN=artzy4u.com`, issued 8/1, expires 10/30/2026. Cert took
+~30s after DNS resolved; `provisionSiteTLSCertificate` returns null and is not
+needed — Netlify issues automatically.
+
+**Smoke test passed:** apex 200 · www 301→apex · http 301→https · all assets
+200 · netlify.toml cache headers applied.
+
+### ⚠ FOOTGUN FOUND AND FIXED 8/1 — read before any future CLI deploy
+
+`C:\Users\stephanie\.netlify\state.json` held **3rdworldart's** site ID. It sat
+in the **home** directory, so every subfolder inherited it — `netlify status`
+run inside `artzy4u/` reported "Current project: 3rdworldart". **A
+`netlify deploy --prod` from the artzy4u folder would have published Artzy4u
+over 3rdworldart.art.**
+
+Fixed: wrote an explicit `3rdworldart/.netlify/state.json`, removed the home
+one (backup `~/.netlify/state.json.bak-20260801`), linked artzy4u to its own
+site. Both repos now resolve correctly and `.netlify/` is gitignored in each.
+
+This is the second recurrence of this footgun (first was 7/24, holding the
+Paragon PROD id). **Always pass `--site <id>` explicitly on CLI deploys.**
 
 Then attach `artzy4u.com` — apex primary, `www` redirecting to it.
 
@@ -81,11 +121,13 @@ Then attach `artzy4u.com` — apex primary, `www` redirecting to it.
 
 ---
 
-## Item 500 — Cross-link ✅ *pending 400*
+## Item 500 — Cross-link — ✅ **DONE 8/1**
 
-Once artzy4u.com is live, add a link on 3rdworldart.art pointing back to the
-umbrella brand — the statement block already names Artzy4u.com in text but
-doesn't link it.
+3rdworldart.art's statement block now links its "Artzy4u.com" mention to
+`https://artzy4u.com` (commit `8e5ef1a`, auto-deployed via CD). Styled mulberry
++ underline so it reads as a link against the calico panel.
+
+Round trip verified live: portfolio → umbrella → portfolio, both 200.
 
 ---
 
