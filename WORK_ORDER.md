@@ -300,7 +300,24 @@ will change it. Repoint it from `www.artsy4y.com` to `artzy4u.com`.
 
 ---
 
-## Item 600 — Email flip — **OPEN, gated**
+## ✅ Item 600 — Email flip — **DONE 8/2, VERIFIED LIVE**
+
+Both sites now show `stephanie@artzy4u.com`:
+- `artzy4u.com` — deployed via CD
+- `3rdworldart.art:251` — deployed via CD (20s)
+
+Unblocked when the alias domain was verified in Google Workspace and an inbound
+test from an external sender landed. Prior attempt bounced `550 5.1.1` because
+the domain wasn't yet verified — DNS was correct throughout.
+
+Remaining on that domain: DKIM. Three keys were generated in sequence (each
+regeneration invalidates the last); the current one is published to Netlify DNS
+and Google is in "Authenticating email with DKIM" state, polling for it. NS1
+propagation lag is the only thing outstanding. **Do not generate another key.**
+
+---
+
+## ~~Item 600 — Email flip~~ — SUPERSEDED
 
 When `stephanie@artzy4u.com` is confirmed receiving, flip the contact address
 on **both** sites in the same pass:
