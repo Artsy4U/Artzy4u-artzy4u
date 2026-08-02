@@ -30,9 +30,21 @@ Decide and supply:
 | # | Question |
 |---|---------|
 | 201 | Is the wordmark **Artzy4u** correct as displayed — capital A, lowercase rest, "4u" in mulberry? |
-| 202 | What other lines belong here besides embroidery and the shop? Each needs a name, one sentence, and a photo |
-| 206 | **The Shop card has no product photo** — it renders a styled `.shot--sign` panel as a stand-in. Drop a real product shot into `images/` and replace it |
-| 207 | Is "The Shop" the right card title, given the umbrella is Artzy4u and the shop is Artsy4u? Two spellings on one page may confuse visitors |
+| 202 | **OPEN** — Stephanie has more lines to add; awaiting name + one sentence + photo for each |
+| ~~206~~ | ✅ **DONE 8/2** — real product photo. Read Banned Books penguin ornament pulled from artsy4u.com with permission, flattened to RGB, 1024×1536, q82 → `images/line-shop.jpg` (68 KB) |
+| ~~207~~ | ✅ **DONE 8/2** — retitled **"Ornaments & Originals"**. Describes what's sold instead of naming a brand, so the Artzy4u/Artsy4u spelling collision never appears on the page |
+
+### Decided 8/2 — artzy4u.studio + artzy4ugroup.com
+
+**Let both expire entirely.** Domains are paid through **Mar 6, 2027**; the
+Squarespace *site* subscription behind them has already lapsed, which is why
+they serve 404.
+
+> ⚠ Consequences accepted: the names are lost permanently at expiry and can be
+> registered by anyone. `artzy4u.studio` carries **Mailgun MX records** and a
+> forward from `stephanieajones@artzy4u.studio` → dolan.todar@gmail.com — that
+> address dies with the domain. Nothing to do now; set a reminder before
+> Mar 2027 to disable auto-renew.
 | 203 | Is the tagline right — "Art made from materials that already had a life"? |
 | 204 | Does the statement block read in your voice, or should it be rewritten the way 502 was on the other site? |
 | 205 | Hero photo — currently the denim flowers. Better one? |

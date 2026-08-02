@@ -159,7 +159,25 @@ confirm the DKIM record resolves publicly and parses correctly.
 
 ---
 
-## 🟠 Item 3 — Fix artsy4y.com's split nameserver delegation
+## 🟠 Item 3 — artsy4y.com nameservers — **ATTEMPTED 8/2, DID NOT COMMIT**
+
+First attempt did not reach the registry. Verified by querying the `.com`
+registry directly (`a.gtld-servers.net`) — not a resolver cache — and by
+watching it for 15 minutes. Still all 8 nameservers.
+
+**Retry, and watch the commit step.** Squarespace's trash icons only remove
+rows from the on-screen list. The change persists **only** when
+**UPDATE NAMESERVERS** is clicked and confirms. Navigating away first silently
+reverts it.
+
+After saving, **reload the page**: 4 entries = saved, 8 = didn't take.
+
+artsy4y.com serves fine throughout (200, "RESIST!") — this is a latent
+inconsistency, not an outage.
+
+---
+
+## ~~🟠 Item 3 — original instructions~~
 
 ### The problem
 
