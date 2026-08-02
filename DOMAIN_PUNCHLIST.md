@@ -43,7 +43,35 @@ arrive once **Item 5** (the alias-domain test) is finished.
 
 ---
 
-## 🔴 Item 1 — Fix the SPF record on artsy4u.com — **DO THIS FIRST**
+## ✅ Item 1 — SPF on artsy4u.com — **DONE 8/2, VERIFIED**
+
+Now serving, authoritative and public agree:
+`v=spf1 include:_spf.google.com ~all` — **exactly one** SPF record, no
+Cloudflare/Zoho remnants.
+
+## ✅ Item 2 — DKIM on artsy4u.com — **DONE 8/2, DNS VERIFIED**
+
+`google._domainkey.artsy4u.com` — 410 chars, `v=DKIM1; k=rsa; p=…`, full
+2048-bit key, not truncated. Authoritative and public resolvers agree.
+
+⚠ Unverifiable from outside: whether **Start authentication** was clicked in
+Google Admin. The record existing does not make Google sign mail — the toggle
+does. Confirm the Authenticate email page reads "Authenticating email".
+
+## 🟡 Item 2b — DMARC for artsy4u.com — **NEW, now safe to add**
+
+Was unsafe before Items 1–2; DMARC only makes sense once SPF and DKIM are
+correct. Add a TXT record in Squarespace DNS:
+
+- **Name:** `_dmarc`
+- **Value:** `v=DMARC1; p=none; rua=mailto:stephanie@artsy4u.com; fo=1`
+
+`p=none` is monitor-only, no delivery change. `rua` points at the same domain's
+own mailbox, so no cross-domain authorization record is needed.
+
+---
+
+## ~~🔴 Item 1 — Fix the SPF record on artsy4u.com~~ — SUPERSEDED, see above
 
 **The single highest-value fix in this document.** Two minutes.
 
