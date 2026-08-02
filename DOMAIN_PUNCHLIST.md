@@ -58,16 +58,19 @@ Cloudflare/Zoho remnants.
 Google Admin. The record existing does not make Google sign mail — the toggle
 does. Confirm the Authenticate email page reads "Authenticating email".
 
-## 🟡 Item 2b — DMARC for artsy4u.com — **NEW, now safe to add**
+## ✅ Item 2b — DMARC for artsy4u.com — **DONE 8/2, VERIFIED**
 
-Was unsafe before Items 1–2; DMARC only makes sense once SPF and DKIM are
-correct. Add a TXT record in Squarespace DNS:
+`_dmarc.artsy4u.com` → `v=DMARC1; p=none; rua=mailto:stephanie@artsy4u.com; fo=1`
+Exactly one record, `p=none` (monitor-only), authoritative and public agree.
 
-- **Name:** `_dmarc`
-- **Value:** `v=DMARC1; p=none; rua=mailto:stephanie@artsy4u.com; fo=1`
+### Mail authentication scorecard
 
-`p=none` is monitor-only, no delivery change. `rua` points at the same domain's
-own mailbox, so no cross-domain authorization record is needed.
+| Domain | SPF | DKIM | DMARC |
+|---|---|---|---|
+| artsy4u.com (Workspace primary) | ✅ Google | ✅ 2048-bit | ✅ p=none |
+| artzy4u.com (alias domain) | ✅ Google | ✅ 2048-bit | ✅ p=none |
+
+Both domains fully authenticated as of 8/2/2026.
 
 ---
 
