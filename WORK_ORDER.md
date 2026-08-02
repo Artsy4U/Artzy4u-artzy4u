@@ -51,7 +51,19 @@ they serve 404.
 
 ---
 
-## Item 300 — Create repo + push — **OPEN, needs decision**
+## Item 300 — Create repo + push — ✅ **DONE 8/1**
+
+Repo: **`github.com/Artsy4U/Artzy4u-artzy4u`** (public). All commits pushed.
+
+⚠ Gotcha for future sessions: this machine's git credential is
+**StephanieAtParagonTulsa**, not Artsy4U. Pushing to an Artsy4U repo requires
+that account added as a **collaborator** *and* the invitation **accepted**
+(`gh api user/repository_invitations` → PATCH the id). Adding without accepting
+still 403s.
+
+---
+
+## ~~Item 300 — original~~ — SUPERSEDED
 
 Repo does not exist yet. Create under `Artsy4U` (personal GitHub) to match
 3rdworldart, public, no template files.
@@ -62,7 +74,15 @@ didn't match and the deploy key 404'd until the repo was transferred.
 
 ---
 
-## Item 400 — Netlify site + domain — **PARTIAL**
+## Item 400 — Netlify site + domain — ✅ **COMPLETE 8/2**
+
+Continuous deployment linked 8/2: repo `Artsy4U/Artzy4u-artzy4u`, branch `main`,
+build command blank, publish `.`. Verified by a real push-to-publish cycle —
+commit `14ec0db` built and deployed automatically.
+
+---
+
+## ~~Item 400 — original~~ — SUPERSEDED
 
 ### ✅ Project created 8/1
 
