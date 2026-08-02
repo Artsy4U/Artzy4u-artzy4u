@@ -205,7 +205,21 @@ artsy4y.com still serves the RESIST! site.
 
 ---
 
-## 🟡 Item 4 — Restore artsy4u.com's missing apex A records
+## ✅ Item 4 — artsy4u.com apex A records — **DONE 8/2, VERIFIED**
+
+All four present and serving on public resolvers:
+`198.185.159.144` · `198.185.159.145` · `198.49.23.144` · `198.49.23.145`
+
+Note: Squarespace's own nameservers briefly answered with only two while the
+change rolled across their anycast network. Public resolvers had all four.
+Normal propagation, converges within the 4h TTL — not a fault.
+
+**artsy4u.com is now COMPLETE**: SPF ✅ · DKIM ✅ · DMARC ✅ · full apex
+redundancy ✅ · site serving 200 ✅
+
+---
+
+## ~~🟡 Item 4 — Restore artsy4u.com's missing apex A records~~ — SUPERSEDED
 
 Squarespace expects **four** A records on the apex. Only two are published:
 
